@@ -32,9 +32,10 @@ body {
 }
 
 .component {
+  --img-width: 540px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  max-width: 1080px;
+  max-width: calc(var(--img-width) * 2);
 }
 
 .img__component {
@@ -44,7 +45,6 @@ body {
 .img__component img {
   display: block;
   border-radius: 0 10px 10px 0;
-  width: 100%;
 }
 
 .tint {
@@ -102,8 +102,56 @@ body {
   font-family: "Lexend Deca", sans-serif;
 }
 
-/* @media (max-width: 1150px) {
+.attribution {
+  font-size: 11px;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+
+@media (max-width: 1100px) {
   .component {
+    --img-width-mobile: 654px;
+    display: flex;
+    width: 90%;
+    margin-top: 50px;
     flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
   }
-} */
+
+  .img__component img {
+    content: url(./images/image-header-mobile.jpg);
+    width: 100%;
+    height: auto;
+  }
+
+  .img__component img,
+  .tint {
+    border-radius: 10px 10px 0 0;
+  }
+
+  .stats__component {
+    max-width: var(--img-width-mobile);
+    height: auto;
+    padding: 40px;
+    text-align: center;
+    border-radius: 0 0 10px 10px;
+  }
+
+  .component__title {
+    margin-top: 10px;
+  }
+
+  .component__stats--flex {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .component__descr {
+    margin-bottom: 25px;
+  }
+}
