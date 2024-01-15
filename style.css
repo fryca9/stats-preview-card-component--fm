@@ -8,7 +8,7 @@
   --main-bg: hsl(233, 47%, 7%);
   --card-bg: hsl(244, 38%, 16%);
   --accent: hsl(277, 64%, 61%);
-  --tint: hsla(277, 90%, 20%, 0.6);
+  --tint: hsla(277, 67%, 27%, 0.65);
   --primary: hsl(0, 0%, 100%);
   --main-paragraph: hsla(0, 0%, 100%, 0.75);
   --stat-heading: hsla(0, 0%, 100%, 0.6);
@@ -16,26 +16,26 @@
 
 html {
   font-family: "Inter", sans-serif;
-  font-family: "Lexend Deca", sans-serif;
   background-color: var(--main-bg);
-  color: white;
+  color: var(--primary);
 }
 
 body {
+  min-height: 100vh;
   margin: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
   gap: 70px;
 }
 
 .component {
   --img-width: 540px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+
+  display: flex;
   max-width: calc(var(--img-width) * 2);
+  margin-top: 50px;
 }
 
 .img__component {
@@ -44,29 +44,38 @@ body {
 
 .img__component img {
   display: block;
-  border-radius: 0 10px 10px 0;
 }
 
-.tint {
+.img__component::after {
+  content: "";
   width: 100%;
   height: 100%;
-  background-color: var(--tint);
   position: absolute;
+  top: 0;
+  left: 0;
   z-index: 1;
+  background-color: var(--tint);
+}
+
+.img__component img,
+.img__component::after {
   border-radius: 0 10px 10px 0;
 }
 
+/* ----------------------------- */
+
 .stats__component {
-  padding: 0 120px 0 80px;
-  background-color: var(--card-bg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 120px 0 70px;
   border-radius: 10px 0 0 10px;
+  background-color: var(--card-bg);
 }
 
 .component__title {
   font-family: "Inter", sans-serif;
   font-size: 2rem;
-  margin-top: 80px;
-  margin-bottom: 30px;
 }
 
 .component__title > span {
@@ -74,12 +83,13 @@ body {
 }
 
 .component__descr {
-  color: var(--main-paragraph);
   font-family: "Inter", sans-serif;
   font-size: 0.9rem;
+  margin-top: 0;
   margin-bottom: 60px;
   line-height: 1.5rem;
   letter-spacing: 0.7px;
+  color: var(--main-paragraph);
 }
 
 .component__stats--flex {
@@ -95,11 +105,11 @@ body {
 
 .stats__caption {
   margin-top: 5px;
-  text-transform: uppercase;
-  color: var(--stat-heading);
+  font-family: "Lexend Deca", sans-serif;
   font-size: 0.6rem;
   letter-spacing: 1px;
-  font-family: "Lexend Deca", sans-serif;
+  text-transform: uppercase;
+  color: var(--stat-heading);
 }
 
 .attribution {
@@ -115,9 +125,8 @@ body {
 @media (max-width: 1100px) {
   .component {
     --img-width-mobile: 654px;
-    display: flex;
     width: 90%;
-    margin-top: 50px;
+
     flex-direction: column-reverse;
     justify-content: center;
     align-items: center;
@@ -126,24 +135,19 @@ body {
   .img__component img {
     content: url(./images/image-header-mobile.jpg);
     width: 100%;
-    height: auto;
   }
 
   .img__component img,
-  .tint {
+  .img__component::after {
     border-radius: 10px 10px 0 0;
   }
 
   .stats__component {
     max-width: var(--img-width-mobile);
     height: auto;
-    padding: 40px;
+    padding: 20px 40px;
     text-align: center;
     border-radius: 0 0 10px 10px;
-  }
-
-  .component__title {
-    margin-top: 10px;
   }
 
   .component__stats--flex {
